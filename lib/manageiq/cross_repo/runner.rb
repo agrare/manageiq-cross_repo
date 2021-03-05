@@ -36,7 +36,7 @@ module ManageIQ::CrossRepo
 
     def bundle_path
       app_path = Pathname.new(ENV["TRAVIS_BUILD_DIR"].presence || Pathname.pwd)
-      app_path.join("vendor", "bundle")
+      app_path.join("vendor", "test_repo", "bundle")
     end
 
     def run_tests
