@@ -91,7 +91,7 @@ module ManageIQ::CrossRepo
       if gem_repos.empty?
         FileUtils.rm_f override_path
       else
-        content = gem_repos.map do |gem|
+        content = gem_repos.excluding(test_repo).map do |gem|
           # If there is a gemspec get the name of the gem from that instead of the repository
           gem_name = gem.path.glob("*.gemspec")&.first&.basename(".gemspec") || gem.repo
           "ensure_gem \"#{gem_name}\", :path => \"#{gem.path}\""
